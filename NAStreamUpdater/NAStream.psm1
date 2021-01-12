@@ -81,7 +81,9 @@ function Get-NewPodcasts {
             ""
         }
     }
-    saveLatest
+
+    # Debug runs are repeatable, so don't save them
+    if (-not $debug) { saveLatest }
 }
 
 function loadLatest {
@@ -102,4 +104,5 @@ function saveLatest {
 }
 
 Export-ModuleMember Get-NewPodcasts
-
+Export-ModuleMember Find-Podcast
+#Export-ModuleMember Get-NewestEpisode

@@ -208,7 +208,7 @@ $shows = @(
         id = 937170
         rssUri = 'https://rareencounter.net/feed.xml'
         tagline = 'rareencounter.net'
-        parse = { parseTitle $title 'Encounter \#(?<num>\d+)\: (?<title>.+)$'}
+        #parse = { parseTitle $title 'Encounter \#(?<num>\d+)\: (?<title>.+)$'}
     }
     @{
         name = "ABS n' a 6-Pack"
@@ -246,6 +246,34 @@ $shows = @(
         rssUri = 'https://feeds.buzzsprout.com/1213430.rss'
         tagline = 'leonydusjohnson.com'
         parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
+    }
+    @{
+        name = "Behind the Sch3m3s"
+        id = 150842
+        rssUri = 'https://www.podserve.fm/series/rss/2202/behind-the-schms.rss'
+        tagline = 'behindthesch3m3s.com'
+        parse = { parseTitle $title '^S01E(?<num>\d+)\: (?<title>.+)$' }
+    }
+    @{
+        name = "Daddycast Rewind"
+        id = 1330022
+        rssUri = 'https://anchor.fm/s/307f9da8/podcast/rss'
+        tagline = 'P.D. Love'
+        parse = { parseTitle $title '^(?<num>\d+) .+ \- (?<title>.+)$' }
+    }
+    @{
+        name = "The Privacy, Security, & OSINT Show"
+        id = 556715
+        rssUri = 'https://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss'
+        tagline = 'Michael Bazzell'
+        parse = { parseTitle $title '^(?<num>\d+)\-(?<title>.+)$' }
+    }
+    @{
+        name = "Origins of Things and Stuff"
+        id = 1366465
+        rssUri = 'http://originsofthingsandstuff.com/rss.xml'
+        tagline = 'Illuminadia and Nick the Rat'
+        parse = { $null, $title }
     }
 )
 
