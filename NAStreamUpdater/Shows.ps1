@@ -28,14 +28,15 @@ $shows = @(
         rssUri = 'http://www.dhunplugged.com/feed/podcast/'
         indexRssUri = 'http://feeds.dhunplugged.com/DHUnplugged'
         tagline = 'Andrew Horowitz & John C. Dvorak'
-        parse = { parseTitle $title '^DHUnplugged #(?<num>\d+)\: (?<title>.+)$' }
+        #parse = { parseTitle $title '^DHUnplugged #(?<num>\d+)\: (?<title>.+)$' }
+        parse = { parseDefault $title }
     }
     @{
         name = "Airline Pilot Guy"
         id = 387814
         rssUri = 'http://airlinepilotguy.com/podcast.xml'
         tagline = 'airlinepilotguy.com'
-        parse = { parseTitle $title '^APG (?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
         disabled = $true
     }
     @{
@@ -51,14 +52,16 @@ $shows = @(
         rssUri = 'http://nicktherat.com/radio/rss.xml'
         indexRssUri = 'http://feeds.feedburner.com/nicktherat/ejbV'
         tagline = 'nicktheratradio.com'
-        parse = { parseTitle $title '^EPISODE (?<num>\d+) : (?<title>.+)$' }
+        #parse = { parseTitle $title '^EPISODE (?<num>\d+) : (?<title>.+)$' }
+        parse = { parseDefault $title }
     }
     @{
         name = "Cordkillers"
         id = 1053273
         rssUri = 'https://feeds.feedburner.com/CordkillersOnlyAudio'
         tagline = 'Brian Brushwood & Tom Merritt'
-        parse = { parseTitle $title '^Cordkillers (?<num>\d+) . (?<title>.+)$' }
+        #parse = { parseTitle $title '^Cordkillers (?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
         disabled = $true
     }
     @{
@@ -121,7 +124,8 @@ $shows = @(
         id = 1028304
         rssUri = 'http://thatlarryshow.com/feed/podcast/'
         tagline = 'thatlarryshow.com'
-        parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
+        #parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
+        parse = { parseDefault $title }
     }
     @{
         name = "Shire News Network Archive"
@@ -150,7 +154,8 @@ $shows = @(
         id = 207356
         rssUri = 'http://feed.nashownotes.com/mfrss.xml'
         tagline = 'moefactz.com'
-        parse = { parseTitle $title '^(?<num>\d+)\: (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^(?<num>\d+)\: (?<title>.+)$' }
     }
     @{
         name = "With Adam Curry"
@@ -168,13 +173,15 @@ $shows = @(
         rssUri = 'http://whoarethese.com/rss'
         indexRssUri = 'https://watps.libsyn.com/rss'
         tagline = 'whoarethese.com'
+        disabled = $true
     }
     @{
         name = "Up is Down"
         id = 1046833
         rssUri = 'https://www.spreaker.com/show/3564656/episodes/feed'
         tagline = 'deanreiner.com'
-        parse = { parseTitle $title '^Ep (?<num>\d+) \: (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^Ep (?<num>\d+) \: (?<title>.+)$' }
     }
     @{
         name = "A Walk Through the Mind"
@@ -194,21 +201,20 @@ $shows = @(
         id = 288180
         rssUri = 'http://funfactfriday.com/index.php/feed/podcast/'
         tagline = 'funfactfriday.com'
-        #parse = { parseTitle $title 'Episode (?<num>\d+) . (?<title>.+)$' }
     }
     @{
         name = "Bowl After Bowl"
         id = 946122
         rssUri = 'https://feed.podbean.com/bowlafterbowl/feed.xml'
         tagline = 'Sir Spencer and Dame Laurien'
-        parse = { parseTitle $title 'Episode (?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title 'Episode (?<num>\d+) . (?<title>.+)$' }
     }
     @{
         name = "Rare Encounter"
         id = 937170
         rssUri = 'https://rareencounter.net/feed.xml'
         tagline = 'rareencounter.net'
-        #parse = { parseTitle $title 'Encounter \#(?<num>\d+)\: (?<title>.+)$'}
     }
     @{
         name = "ABS n' a 6-Pack"
@@ -216,21 +222,24 @@ $shows = @(
         rssUri = 'https://www.absna6pack.com/podcast?format=rss'
         indexRssUri = 'https://www.absna6pack.com/?format=rss'
         tagline = 'absna6pack.com'
-        parse = { parseTitle $title 'Episode (?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title 'Episode (?<num>\d+) . (?<title>.+)$' }
     }
     @{
         name = "Back From The Future"
         id = 31769
         rssUri = 'https://www.backfromthefutureshow.com/feed/podcast'
         tagline = 'backfromthefutureshow.com'
-        parse = { parseTitle $title 'Ep\. (?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title 'Ep\. (?<num>\d+) . (?<title>.+)$' }
     }
     @{
         name = "Our Big Dumb Mouth"
         id = 907769
         rssUri = 'https://ourbigdumbmouth.libsyn.com/RSS'
         tagline = 'ourbigdumbmouth.com'
-        parse = { parseTitle $title 'OBDM(?<num>\d+) . (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title 'OBDM(?<num>\d+) . (?<title>.+)$' }
     }
     @{
         name = "2030 Podcast"
@@ -238,14 +247,16 @@ $shows = @(
         rssUri = 'https://2030podcast.com/category/2030-podcast/feed/'
         indexRssUri = 'https://2030podcast.com/feed/'
         tagline = '2030podcast.com'
-        parse = { parseTitle $title '^(?<num>\d+). (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^(?<num>\d+). (?<title>.+)$' }
     }
     @{
         name = "Informed Dissent"
         id = 1011495
         rssUri = 'https://feeds.buzzsprout.com/1213430.rss'
         tagline = 'leonydusjohnson.com'
-        parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
     }
     @{
         name = "Behind the Sch3m3s"
@@ -266,7 +277,8 @@ $shows = @(
         id = 556715
         rssUri = 'https://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss'
         tagline = 'Michael Bazzell'
-        parse = { parseTitle $title '^(?<num>\d+)\-(?<title>.+)$' }
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^(?<num>\d+)\-(?<title>.+)$' }
     }
     @{
         name = "Origins of Things and Stuff"
@@ -274,6 +286,59 @@ $shows = @(
         rssUri = 'http://originsofthingsandstuff.com/rss.xml'
         tagline = 'Illuminadia and Nick the Rat'
         parse = { $null, $title }
+    }
+    @{
+        name = "Podcasting 2.0"
+        id = 920666
+        rssUri = 'http://mp3s.nashownotes.com/pc20rss.xml'
+        tagline = 'Adam Curry and Dave Jones'
+        parse = { parseDefault $title }
+        #parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
+    }
+    @{
+        name = "Sir Gene Speaks"
+        id = 1374518
+        rssUri = 'https://feeds.buzzsprout.com/1648795.rss'
+        tagline = 'podcast.sirgene.com'
+    }
+    @{
+        name = "Bandrew Says"
+        id = 1380649
+        rssUri = 'https://bandrewsays.libsyn.com/spotify'
+        tagline = 'bandrewsays.com'
+        #parse = { parseTitle $title '^(?<num>\d+) (?<title>.+)$' }
+    }
+    @{
+        name = "The Currency"
+        id = 1167920
+        rssUri = 'https://thecurrency.libsyn.com/rss'
+        tagline = 'Mike Gastin'
+        #parse = { parseTitle $title '^(?<num>\d+) (?<title>.+)$' }
+    }
+    @{
+        name = "The Private Citizen"
+        id = 1223881
+        rssUri = 'https://privatecitizen.press/index.xml'
+        tagline = 'Fabian A. Scherschel'
+    }
+    @{
+        name = "Quick Hitts"
+        id = 318137
+        rssUri = 'http://www.davehitt.com/podcasts/quickhitts.xml'
+        tagline = 'davehitt.com'
+    }
+    @{
+        name = "ms. Informed NAtion"
+        id = 3160684
+        rssUri = 'https://www.podserve.fm/series/rss/2605/cast-revue.rss'
+        tagline = 'a bunch of NA trolls'
+    }
+    @{
+        name = "Revelations Radio News"
+        id = 44217
+        rssUri = 'https://www.revelationsradionews.com/feed/podcast/'
+        tagline = 'revelationsradionews.com'
+        parse = { parseDefault $title }
     }
 )
 
@@ -290,3 +355,5 @@ function parseTitle([string]$t, [string]$rgx) {
         (0, "CANNOT PARSE TITLE: {{$title}}")
     }
 }
+
+function parseDefault([string]$t) { parseTitle $t '\D*(?<num>\d+)\W*(?<title>.+)\W*$' }
