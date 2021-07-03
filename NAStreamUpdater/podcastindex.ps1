@@ -26,7 +26,7 @@ Optional
 If provided, function returns $null if latest episode is at or before this timestamp
 (unix time = seconds since 1970-01-01Z)
 #>
-function Get-NewestEpisode ([int]$id, [int]$since = 0) {
+function Get-LatestPodcastEpisode ([int]$id, [int]$since = 0) {
     $callUri = "episodes/byfeedid?id=$id&since=$since&max=1"
     $response = Call-Podcastindex $callUri
     if ($response.count -gt 0) { $response.items[0] }

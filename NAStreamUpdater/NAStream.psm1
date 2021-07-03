@@ -28,7 +28,8 @@ function Get-NewPodcasts {
     param(
         [string]$filter = $null,
         [switch]$download,
-        [switch]$debug
+        [switch]$debug,
+        [switch]$batch
     )
 
     if ($debug) { $DebugPreference = 'SilentlyContinue' }
@@ -45,15 +46,17 @@ function Get-NewPodcasts {
         if ($show.disabled) { continue; }
 
         $lastTimestamp = [int]$SCRIPT:latestTimestamps[$show.id]
+        if ($debug) { $lastTimestamp = 0 }
 
-        $latest = Get-NewestEpisode -id $show.id -since $lastTimestamp
+        $latest = Get-LatestPodcastEpisode -id $show.id -since $lastTimestamp
 
         if ($latest) {
 
             $title = $latest.title
             $link = $latest.enclosureUrl
 
-            $dateText = [DateTimeOffset]::FromUnixTimeSeconds($latest.datePublished).DateTime.ToString('ddd, dd MMM yyyy')
+            $datePublished = [DateTimeOffset]::FromUnixTimeSeconds($latest.datePublished).DateTime
+            $dateText = $datePublished.ToString('ddd, dd MMM yyyy')
 
             if ($show.parse) {
                 $showNumber, $showTitle = & $show.parse
@@ -69,18 +72,30 @@ function Get-NewPodcasts {
             } else {
                 $headline = '{0}: "{1}" - {2} - {3}' -f $show.name, $showTitle, $dateText, $show.tagline
             }
-            Write-Host "New episode for $($show.name):" -ForegroundColor Yellow
-            $headline
-            $link
-            ""
+            if ($batch) {
+                $fname = if ($showNumber) { $showNumber } else { $datePublished.ToString('yyyyMMdd') }
+                $folder = ($show.name -replace '\W','').ToLower()
+                Write-Host ("{0}/{1}.mp3" -f $folder, $fname) -ForegroundColor Yellow
+                $headline
+                $link
+            } else {
+                # Pretty output
+                Write-Host "New episode for $($show.name):" -ForegroundColor Yellow
+                $headline
+                $link
+                ""
+            }
             
             $SCRIPT:latestTimestamps[$show.id] = $latest.datePublished
 
         } else {
-            Write-Host "No new episodes for $($show.name)" -ForegroundColor Gray
-            ""
+            if (-not $batch) {
+                Write-Host "No new episodes for $($show.name)" -ForegroundColor Gray
+                ""
+            }
         }
     }
+    ""
 
     # Debug runs are repeatable, so don't save them
     if (-not $debug) { saveLatest }
@@ -105,4 +120,4 @@ function saveLatest {
 
 Export-ModuleMember Get-NewPodcasts
 Export-ModuleMember Find-Podcast
-#Export-ModuleMember Get-NewestEpisode
+Export-ModuleMember Get-LatestPodcastEpisode
