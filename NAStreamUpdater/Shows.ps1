@@ -41,8 +41,10 @@ $shows = @(
     }
     @{
         name = "The OO Top Ten"
-        id = 1332231
-        rssUri = 'http://rynothebearded.com/category/that-show/feed/'
+#        id = 1332231
+#        rssUri = 'http://rynothebearded.com/category/that-show/feed/'
+        id = 1665363
+        rssUri = 'http://rynothebearded.com/feed/podcast'
         tagline = 'ryno.cc'
         parse = { ($null, $title) }
     },
@@ -121,7 +123,8 @@ $shows = @(
     }
     @{
         name = "That Larry Show"
-        id = 1028304
+        #id = 1028304  /// HUH?  Did this change?
+        id = 1036616
         rssUri = 'http://thatlarryshow.com/feed/podcast/'
         tagline = 'thatlarryshow.com'
         #parse = { parseTitle $title '^Episode (?<num>\d+)\: (?<title>.+)$' }
@@ -148,6 +151,7 @@ $shows = @(
         rssUri = 'http://grumpyoldbens.com/feed/podcast'
         indexRssUri = 'https://grumpyoldbens.com/index.php/feed/podcast/'
         tagline = 'grumpyoldbens.com'
+        disabled = $true
     }
     @{
         name = "Moe Factz"
@@ -155,7 +159,6 @@ $shows = @(
         rssUri = 'http://feed.nashownotes.com/mfrss.xml'
         tagline = 'moefactz.com'
         parse = { parseDefault $title }
-        #parse = { parseTitle $title '^(?<num>\d+)\: (?<title>.+)$' }
     }
     @{
         name = "With Adam Curry"
@@ -173,7 +176,6 @@ $shows = @(
         rssUri = 'http://whoarethese.com/rss'
         indexRssUri = 'https://watps.libsyn.com/rss'
         tagline = 'whoarethese.com'
-        disabled = $true
     }
     @{
         name = "Up is Down"
@@ -303,8 +305,8 @@ $shows = @(
     }
     @{
         name = "Bandrew Says"
-        id = 1380649
-        rssUri = 'https://bandrewsays.libsyn.com/spotify'
+        id = 174505 #1380649
+        rssUri = 'https://bandrewsays.libsyn.com/rss'
         tagline = 'bandrewsays.com'
         #parse = { parseTitle $title '^(?<num>\d+) (?<title>.+)$' }
     }
@@ -320,6 +322,7 @@ $shows = @(
         id = 1223881
         rssUri = 'https://privatecitizen.press/index.xml'
         tagline = 'Fabian A. Scherschel'
+        parse = { parseDefault $title }
     }
     @{
         name = "Quick Hitts"
@@ -332,6 +335,7 @@ $shows = @(
         id = 3160684
         rssUri = 'https://www.podserve.fm/series/rss/2605/cast-revue.rss'
         tagline = 'a bunch of NA trolls'
+        parse = { parseDefault $title }
     }
     @{
         name = "Revelations Radio News"
@@ -339,6 +343,87 @@ $shows = @(
         rssUri = 'https://www.revelationsradionews.com/feed/podcast/'
         tagline = 'revelationsradionews.com'
         parse = { parseDefault $title }
+    }
+    @{
+        name = "AI.Cooking"
+        id = 3662287
+        rssUri = 'https://anchor.fm/s/594995cc/podcast/rss'
+        tagline = 'ai.cooking'
+        parse = { parseDefault $title }
+    }
+    @{
+        name = "Canary Cry News Talk"
+        id = 6525
+        rssUri = 'https://canarycrynewstalk.libsyn.com/rss'
+        tagline = 'canarycryradio.com'
+        parse = { 
+            if ($link -match '\/CCNT(\d+)') { $matches[1] } else { -1 }
+            $title
+        }
+    }
+    @{
+        name = "Angry Tech News"
+        id = 4242589
+        rssUri = 'https://angrytechnews.com/index.php/feed/podcast/'
+        tagline = 'Ryan Bemrose - angrytechnews.com'
+        parse = {
+            if ($link -match '\/angrytechnews_0(\d+)') { $matches[1] } else { -1 }
+            $title
+        }
+    }
+    @{
+        name = "Planet Rage"
+        id = 4207213
+        rssUri = 'https://planetrage.show/feed/podcast/'
+        tagline = "Larry Bleidner & Darren O'Neill - planetrage.show"
+        parse = {
+            if ($link -match '\/planetrage_00(\d+)') { $matches[1] } else { -1 }
+            $title
+        }
+    }
+    @{
+        name = "The Defender"
+        id = 1577059
+        rssUri = 'https://anchor.fm/s/4ae2c0e4/podcast/rss'
+        tagline = 'Robert F. Kennedy Jr'
+    }
+    @{
+        name = "Unrelenting"
+        id = 4432692
+        rssUri = 'https://www.unrelenting.show/feed/podcast/'
+        tagline = "Gene Naftulyev & Darren O'Neill - unrelenting.show"
+    }
+    @{
+        name = "The Sample Hour"
+        id = 1097028
+        rssUri = 'https://www.samplehour.com/feed/index.php?cat=1'
+        tagline = "samplehour.com"
+        parse = { parseDefault $title }
+    }
+    @{
+        name = "Double Thought Dimension"
+        id = 1357399
+        rssUri = 'https://media.rss.com/doublethoughtdimension/feed.xml'
+        tagline = "doublethoughtdimension.com"
+    }
+    @{
+        name = "Curry & The Keeper"
+        id = 4533035
+        rssUri = 'https://mp3s.nashownotes.com/catkrss.xml'
+        tagline = 'Adam & Tina Curry'
+        parse = { parseDefault $title }
+    }
+    @{
+        name = "The Lotus Podcast"
+        id = 4541022
+        rssUri = 'https://lotuspodcast.net/feed/podcast/'
+        tagline = 'Pheonix & PhoneBoy'
+    }
+    @{
+        name = "Millennial Media Offensive"
+        id = 4831193
+        rssUri = 'https://namillennial.com/feed/podcast'
+        tagline = 'mmo.show'
     }
 )
 

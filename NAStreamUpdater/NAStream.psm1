@@ -121,3 +121,4 @@ function saveLatest {
 Export-ModuleMember Get-NewPodcasts
 Export-ModuleMember Find-Podcast
 Export-ModuleMember Get-LatestPodcastEpisode
+Export-ModuleMember Call-Podcastindex
