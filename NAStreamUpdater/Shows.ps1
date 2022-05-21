@@ -425,6 +425,12 @@ $shows = @(
         rssUri = 'https://namillennial.com/feed/podcast'
         tagline = 'mmo.show'
     }
+    @{
+        name = "The Written Revolution"
+        id = 4931373
+        rssUri = 'https://feeds.buzzsprout.com/1933566.rss'
+        tagline = 'realpassageway.com'
+    }
 )
 
 
