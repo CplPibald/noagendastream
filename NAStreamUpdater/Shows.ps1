@@ -151,7 +151,6 @@ $shows = @(
         rssUri = 'http://grumpyoldbens.com/feed/podcast'
         indexRssUri = 'https://grumpyoldbens.com/index.php/feed/podcast/'
         tagline = 'grumpyoldbens.com'
-        disabled = $true
     }
     @{
         name = "Moe Factz"
@@ -414,10 +413,10 @@ $shows = @(
         parse = { parseDefault $title }
     }
     @{
-        name = "The Lotus Podcast"
+        name = "The Lotus Effect"
         id = 4541022
-        rssUri = 'https://lotuspodcast.net/feed/podcast/'
-        tagline = 'Pheonix & PhoneBoy'
+        rssUri = 'https://lotuseffect.show/feed/podcast'
+        tagline = 'lotuseffect.show'
     }
     @{
         name = "Millennial Media Offensive"
@@ -430,6 +429,24 @@ $shows = @(
         id = 4931373
         rssUri = 'https://feeds.buzzsprout.com/1933566.rss'
         tagline = 'realpassageway.com'
+    }
+    @{
+        name = "Beer, Bourbon and Balderdash"
+        id = 4902577
+        rssUri = 'http://beerbourbonbalderdash.com/feed/podcast/'
+        tagline = 'beerbourbonbalderdash.com'
+    }
+    @{
+        name = "The Intergalactic Boombox"
+        id = 3758236
+        rssUri = 'https://feeds.buzzsprout.com/1780689.rss'
+        tagline = 'boomboxpod.com'
+    }
+    @{
+        name = "Complex Candor"
+        id = 5317748
+        rssUri = 'https://complexcandor.com/feed/'
+        tagline = 'complexcandor.com'
     }
 )
 

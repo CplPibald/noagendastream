@@ -29,7 +29,7 @@ function Get-NewPodcasts {
         [string]$filter = $null,
         [switch]$download,
         [switch]$debug,
-        [switch]$batch
+        [switch]$batch = $true
     )
 
     if ($debug) { $DebugPreference = 'SilentlyContinue' }
@@ -95,6 +95,7 @@ function Get-NewPodcasts {
             }
         }
     }
+    ""
     ""
 
     # Debug runs are repeatable, so don't save them
